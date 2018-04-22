@@ -1,5 +1,16 @@
 package com.hongying.bean;
 
+/**
+ * CREATE TABLE student(
+	id int primary key not null auto_increment,
+	name varchar(10),
+	age int,
+	score int,
+	clsId int --所属班级ID
+	)
+ * @author Administrator
+ *
+ */
 public class student {
 	private int id;
 	public int getId() {
