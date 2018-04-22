@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hongying.dao.studentMapper" >
+	<resultMap id="StudentResultMap" type="com.hongying.bean.student" >
+		<result column="ID" property="id"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="AGE" property="age"/>
+		<result column="SCORE" property="score"/>
+		<result column="CLSID" property="clsId"/>
+	</resultMap>
+	<select id="queryStudentById" parameterType="java.util.Map" resultMap="StudentResultMap">
+  	select * from student 
+		<choose>  
+			<when test="clsId=='two'">  
+                where clsId= '2'
+			</when>  
+			<when test="clsId=='three'">  
+                where clsId= '3' 
+			</when>  
+			<otherwise>  
+                where clsId in (2,3)
+			</otherwise>
+		</choose>  
+	</select>
+	
+	<update id="updateStudent"  parameterType="com.hongying.bean.student">
+		update student 
+		<set>
+			<if test="name != null" >
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null" >
+				age = #{age},
+			</if>
+			<if test="score != null" >
+				score = #{score},
+			</if>
+			<if test="clsid != null" >
+				clsId = #{clsId},
+			</if>
+		</set> 
+		where id = #{areaCode,jdbcType=INT}
+	</update>
+	<delete id="deleteStudentAll">
+		delete from student
+	</delete>
+	
+	<delete id="deleteStudent" parameterType="com.hongying.bean.student">
+		delete from student where id in 
+		<foreach item="item" index="index" collection="areaCodes" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</delete>
+	<insert id="saveStudent" parameterType="com.hongying.bean.student">
+	insert into student (name, age, score,clsId)
+		values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},#{score,jdbcType=VARCHAR},#{clsId,jdbcType=VARCHAR})
+	</insert>
+</mapper>
