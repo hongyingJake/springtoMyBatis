@@ -152,6 +152,11 @@
 		</property>
 		<property name="databaseIdProvider" ref="databaseIdProvider" />  
 		<property name="typeAliasesPackage" value="com.hongying.dao"></property>
+		<!-- <property name="plugins">
+			<array>
+				<bean class="com.hongying.filter.filterQuery"></bean>
+			</array>
+		</property> -->
 		<!--<property name="plugins">
 				<array>
 					<bean class="com.zhuguang.jack.mybatisInterceptor.ExectorInterceptor"></bean>
