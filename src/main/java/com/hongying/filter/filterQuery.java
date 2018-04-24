@@ -21,7 +21,7 @@ public class filterQuery implements Interceptor{
 	public Object intercept(Invocation invocation) throws Throwable {
 		//每次执行了拦截方法这里都会打印个日志
 		System.out.println("==================执行了一次拦截方法");
-		return invocation.getTarget();
+		return invocation.proceed();
 	}
 	public Object plugin(Object target) {
 		//对Executor接口的实现类进行拦截
