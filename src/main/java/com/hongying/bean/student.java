@@ -47,4 +47,13 @@ public class student {
 	private int age;
 	private int score;
 	private int clsId;
+	
+	@Override
+	public String toString() {
+		StringBuilder sb=new StringBuilder();
+		sb.append("==================={");
+		sb.append(String.format("id:%s,name:%s,age:%s,score:%s,clsId:%s", id,name,age,score,clsId));
+		sb.append("}===================");
+		return sb.toString();
+	}
 }

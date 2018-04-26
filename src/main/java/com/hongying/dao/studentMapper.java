@@ -9,7 +9,7 @@ import com.hongying.bean.student;
 @Repository
 public interface studentMapper {
 	    int saveStudent(student area);
-	    int deleteStudent(Map param);
+	    int deleteStudent(int id);
 	    int deleteStudentAll();
 	    int updateStudent(student area);
 	    List<student> queryStudentById(Map param);

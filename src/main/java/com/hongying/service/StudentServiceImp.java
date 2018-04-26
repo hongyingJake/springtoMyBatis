@@ -18,8 +18,8 @@ public class StudentServiceImp implements StudentService {
 		return mapper.saveStudent(area);
 	}
 
-	public int deleteStudent(Map param) {
-		return mapper.deleteStudent(param);
+	public int deleteStudent(int id) {
+		return mapper.deleteStudent(id);
 	}
 
 	public int deleteStudentAll() {

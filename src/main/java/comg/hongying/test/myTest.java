@@ -25,13 +25,16 @@ public class myTest {
 	@Test
 	public void queryStudent(){
 		//1、添加
-//		student stu=new student();
-//		stu.setName("haha");
-//		stu.setAge(23);
-//		stu.setScore(100);
-//		stu.setClsId(3);
-//		int i=service.saveStudent(stu);
-//		System.out.println("更新结果："+i);
+		student stu=new student();
+		stu.setName("hongying");
+		stu.setAge(28);
+		stu.setScore(300);
+		stu.setClsId(3);
+		stu.setId(3);
+		//int i=service.saveStudent(stu);
+		//int i=service.updateStudent(stu);
+		int i=service.deleteStudent(1);
+		System.out.println("更新结果："+i);
 		
 		//2、查询
 		//更加map参数动态拼接SQL
@@ -40,6 +43,9 @@ public class myTest {
 		//注意：由于判断是否==,必须是应用类型，使用2整形比较都是false
 		parms.put("clsId", "two");
 		List<student> lst= service.queryStudentById(parms);
+		for(student s:lst){
+			System.out.println(s.toString());
+		}
 		System.out.println("查询结果：================"+lst.size());
 	}
 }

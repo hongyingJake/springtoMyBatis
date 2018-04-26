@@ -12,7 +12,7 @@
   	select * from student 
 		<choose>  
 			<when test="clsId=='two'">  
-                where clsId= '2'
+                where clsId= '1'
 			</when>  
 			<when test="clsId=='three'">  
                 where clsId= '3' 
@@ -35,21 +35,18 @@
 			<if test="score != null" >
 				score = #{score},
 			</if>
-			<if test="clsid != null" >
+			<if test="clsId != null" >
 				clsId = #{clsId},
 			</if>
 		</set> 
-		where id = #{areaCode,jdbcType=INT}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<delete id="deleteStudentAll">
 		delete from student
 	</delete>
 	
-	<delete id="deleteStudent" parameterType="com.hongying.bean.student">
-		delete from student where id in 
-		<foreach item="item" index="index" collection="areaCodes" open="(" separator="," close=")">
-				#{item}
-		</foreach>
+	<delete id="deleteStudent" parameterType="java.lang.Integer">
+		delete from student where id =#{id}
 	</delete>
 	<insert id="saveStudent" parameterType="com.hongying.bean.student">
 	insert into student (name, age, score,clsId)
